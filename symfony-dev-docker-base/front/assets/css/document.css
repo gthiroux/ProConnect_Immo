@@ -1,0 +1,377 @@
+/* ————————————————————————————— DOCUMENT PAGE */
+
+/* HERO */
+.doc-hero {
+  min-height: calc(100vh - var(--nav-h));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 80px 32px;
+  gap: 60px;
+  align-items: center;
+}
+
+.doc-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.etiquette {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--discret);
+  border: 1px solid var(--bord);
+  border-radius: 20px;
+  padding: 5px 14px;
+  width: fit-content;
+}
+
+.titre-hero {
+  font-family: var(--police-titre);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--sombre);
+}
+
+.titre-hero .accent {
+  color: var(--or);
+}
+
+.sous-titre {
+  color: var(--discret);
+  font-size: 15px;
+  max-width: 420px;
+  line-height: 1.7;
+}
+
+.agents {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+.avatars {
+  display: flex;
+}
+.avatars img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+  margin-left: -8px;
+  object-fit: cover;
+}
+.avatars img:first-child { margin-left: 0; }
+.agents-label {
+  font-size: 13px;
+  color: var(--discret);
+}
+
+/* RIGHT / CARD */
+.doc-hero-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-certif {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: var(--sombre);
+  color: var(--blanc);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 14px 18px;
+  line-height: 1.4;
+  z-index: 2;
+}
+
+.acces-card {
+  background: var(--blanc);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.06);
+  z-index: 1;
+}
+
+.acces-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--discret);
+  letter-spacing: .04em;
+}
+
+.acces-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  font-family: var(--police-texte);
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--sombre);
+  outline: none;
+  transition: border-color var(--anim);
+}
+.acces-input:focus { border-color: var(--sombre); }
+.acces-input.erreur { border-color: #c0392b; animation: shake .3s ease; }
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  25%      { transform: translateX(-6px); }
+  75%      { transform: translateX(6px); }
+}
+
+.btn-deverrouiller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--sombre);
+  color: var(--blanc);
+  border: none;
+  border-radius: var(--rayon);
+  padding: 16px 24px;
+  font-family: var(--police-texte);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--anim), transform var(--anim);
+}
+.btn-deverrouiller:hover { background: #2a2a28; transform: translateY(-1px); }
+
+.acces-erreur {
+  font-size: 12px;
+  color: #c0392b;
+  min-height: 16px;
+}
+
+.acces-aide {
+  font-size: 12px;
+  color: var(--discret);
+  text-decoration: underline;
+  text-align: center;
+  transition: color var(--anim);
+}
+.acces-aide:hover { color: var(--sombre); }
+
+.acces-deco {
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--bord);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: .4;
+}
+
+/* ————————————————————————————— DOCUMENTS SECTION */
+
+.doc-section {
+  padding: 80px 0 120px;
+}
+
+.doc-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.titre-section {
+  font-family: var(--police-titre);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-top: 8px;
+}
+
+.doc-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doc-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--blanc);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 10px 16px;
+}
+.doc-search-wrap svg { color: var(--discret); flex-shrink: 0; }
+.doc-search {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: var(--police-texte);
+  font-size: 13px;
+  color: var(--sombre);
+  width: 200px;
+}
+.doc-search::placeholder { color: var(--discret); }
+
+.btn-sombre {
+  background: var(--sombre);
+  color: var(--blanc);
+  border: none;
+  border-radius: var(--rayon);
+  font-family: var(--police-texte);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--anim);
+  text-decoration: none;
+}
+.btn-sombre:hover { background: #2a2a28; }
+.btn-sm {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* Filtres */
+.doc-filtres {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.filtre {
+  background: none;
+  border: 1px solid var(--bord);
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-family: var(--police-texte);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--discret);
+  cursor: pointer;
+  transition: all var(--anim);
+}
+.filtre:hover { border-color: var(--sombre); color: var(--sombre); }
+.filtre.actif { background: var(--sombre); border-color: var(--sombre); color: var(--blanc); }
+
+/* Grille */
+.doc-grille {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--blanc);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  padding: 20px 24px;
+  transition: box-shadow var(--anim), transform var(--anim);
+}
+.doc-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,.07);
+  transform: translateY(-1px);
+}
+
+.doc-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--rayon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.doc-card-icon.contrat { background: #edf2ff; color: #3b5bdb; }
+.doc-card-icon.rapport { background: #ebfbee; color: #2f9e44; }
+.doc-card-icon.acte    { background: #fff3bf; color: #e67700; }
+.doc-card-icon.fiscal  { background: #fff0f6; color: #c2255c; }
+
+.doc-card-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.doc-card-type {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--discret);
+}
+.doc-card-titre {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sombre);
+}
+.doc-card-meta {
+  font-size: 12px;
+  color: var(--discret);
+}
+
+.doc-card-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.doc-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--discret);
+  transition: all var(--anim);
+}
+.doc-btn:hover { border-color: var(--sombre); color: var(--sombre); background: var(--bg); }
+
+.doc-vide {
+  text-align: center;
+  color: var(--discret);
+  font-size: 14px;
+  padding: 60px 0;
+}
+
+/* ————————————————————————————— RESPONSIVE */
+@media (max-width: 900px) {
+  .doc-hero { grid-template-columns: 1fr; gap: 48px; }
+  .badge-certif { display: none; }
+  .doc-section-header { flex-direction: column; align-items: flex-start; }
+  .doc-actions { flex-wrap: wrap; }
+  .doc-search { width: 160px; }
+}
