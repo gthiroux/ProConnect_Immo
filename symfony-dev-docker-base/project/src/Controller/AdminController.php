@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/admin')]
+#[Route('/profil')]
 final class AdminController extends AbstractController
 {
-    #[Route(name: 'app_admin_index', methods: ['GET'])]
+    #[Route('/all', name: 'app_admin_index', methods: ['GET'])]
     public function index(AdminRepository $adminRepository): Response
     {
         return $this->render('admin/index.html.twig', [
@@ -42,9 +42,11 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_show', methods: ['GET'])]
-    public function show(Admin $admin): Response
+    #[Route( name: 'app_admin_profil')]
+    public function profil(): Response
     {
+        $admin=$this->getUser();
+
         return $this->render('admin/show.html.twig', [
             'admin' => $admin,
         ]);
