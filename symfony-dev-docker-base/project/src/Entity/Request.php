@@ -35,10 +35,10 @@ class Request
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\Column(length: 18)]
+    #[ORM\Column(length: 18,nullable:true)]
     private ?string $code_mail = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable:true)]
     private ?string $UUID = null;
 
     #[ORM\ManyToOne(inversedBy: 'requests')]

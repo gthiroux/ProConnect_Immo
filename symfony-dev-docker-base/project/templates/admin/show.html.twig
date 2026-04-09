@@ -8,25 +8,21 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ admin.id }}</td>
+                <th>Nom de famille</th>
+                <td>{{ admin.lastname}}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ admin.firstname}}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ admin.email }}</td>
             </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ admin.roles ? admin.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ admin.password }}</td>
-            </tr>
+           
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_index') }}">back to list</a>
 
     <a href="{{ path('app_admin_edit', {'id': admin.id}) }}">edit</a>
 

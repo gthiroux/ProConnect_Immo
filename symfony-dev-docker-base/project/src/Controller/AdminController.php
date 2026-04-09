@@ -44,9 +44,11 @@ final class AdminController extends AbstractController
 
     #[Route( name: 'app_admin_profil')]
     public function profil(): Response
-    {
+    {   
         $admin=$this->getUser();
-
+        if (!$admin) {
+        return $this->redirectToRoute('app_login');
+        }
         return $this->render('admin/show.html.twig', [
             'admin' => $admin,
         ]);
@@ -61,7 +63,7 @@ final class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_profil', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/edit.html.twig', [
@@ -78,6 +80,6 @@ final class AdminController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
 }
