@@ -1,0 +1,177 @@
+:root {
+  --bg:         #f4f3ef; 
+  --blanc:      #ffffff; 
+  --sombre:     #111110; 
+  --discret:    #6b6b62; 
+  --bord:       #e0dfd8; 
+
+  --or:         #67246F; 
+  --or-clair:   #3EC271; 
+  --bleu-alt:   #227F89;
+
+  --police-titre: 'Cormorant Garamond', Georgia, serif;
+  --police-texte: 'DM Sans', system-ui, sans-serif;
+
+  --rayon:      4px;
+  --anim:       0.25s ease;
+  --largeur:    1280px;
+  --nav-h:      68px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--sombre);
+  font-family: var(--police-texte);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; }
+
+/* ————————————————————————————— NAV */
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--bord);
+  z-index: 100;
+  transition: box-shadow var(--anim);
+}
+.nav.defilé { box-shadow: 0 2px 16px rgba(0,0,0,.08); }
+
+.nav-contenu {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-right: auto;
+  color: var(--sombre);
+}
+
+.nav-liens {
+  display: flex;
+  gap: 32px;
+}
+.nav-liens li {
+  position: relative;
+}
+.nav-liens li::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--sombre);
+  transition: width var(--anim);
+}
+.nav-lien {
+  font-size: 14px;
+  color: var(--discret);
+  transition: color var(--anim);
+  align-items: center;
+  height: var(--nav-h);
+}
+.nav-lien:hover,
+.nav-lien.actif { color: var(--sombre); }
+.nav-liens li:has(.nav-lien.actif)::after,
+.nav-liens li:has(.nav-lien:hover)::after { width: 100%; }
+
+.nav-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-menu span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--sombre);
+  transition: transform var(--anim), opacity var(--anim);
+}
+
+/* ————————————————————————————— MISE EN PAGE */
+
+.page {
+  padding-top: var(--nav-h);
+}
+
+.centre {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+/* ————————————————————————————— PIED DE PAGE */
+
+.pied {
+  background: var(--sombre);
+  color: rgba(255,255,255,.6);
+  padding: 40px 32px;
+}
+.pied-contenu {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.pied-logo {
+  font-family: var(--police-titre);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--blanc);
+  line-height: 1.2;
+}
+.pied-liens {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.pied-liens a            { font-size: 12px; transition: color var(--anim); }
+.pied-liens a:hover      { color: var(--blanc); }
+.pied-droits {
+  font-size: 11px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* ————————————————————————————— RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero .centre          { grid-template-columns: 1fr; }
+  .hero-image            { display: none; }
+  .grille-cartes         { grid-template-columns: 1fr; }
+  .section-en-tete       { flex-direction: column; align-items: flex-start; }
+  .note                  { text-align: left; }
+  .identite              { grid-template-columns: 1fr; }
+  .galerie               { display: none; }
+  .pied-contenu          { flex-direction: column; align-items: flex-start; }
+  .pied-droits           { margin-left: 0; }
+  .nav-liens             { display: none; }
+  .nav-menu              { display: flex; }
+}
