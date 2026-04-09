@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/profil')]
@@ -22,25 +23,7 @@ final class AdminController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_admin_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $admin = new Admin();
-        $form = $this->createForm(AdminType::class, $admin);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($admin);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_admin_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('admin/new.html.twig', [
-            'admin' => $admin,
-            'form' => $form,
-        ]);
-    }
+    
 
     #[Route( name: 'app_admin_profil')]
     public function profil(): Response
@@ -55,12 +38,17 @@ final class AdminController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(AdminType::class, $admin);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $form->get('password')->getData();
+    
+            if (!empty($plainPassword)) {
+                $admin->setPassword($passwordHasher->hashPassword($admin, $plainPassword));
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_profil', [], Response::HTTP_SEE_OTHER);
