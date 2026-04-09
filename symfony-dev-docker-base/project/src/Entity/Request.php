@@ -35,11 +35,16 @@ class Request
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\Column(length: 18)]
+    #[ORM\Column(length: 18,nullable:true)]
     private ?string $code_mail = null;
 
-    #[ORM\Column]
-    private ?bool $done = null;
+    #[ORM\Column(length: 255, nullable:true)]
+    private ?string $UUID = null;
+
+    #[ORM\ManyToOne(inversedBy: 'requests')]
+    private ?Home $house = null;
+
+
 
     public function getId(): ?int
     {
@@ -142,15 +147,29 @@ class Request
         return $this;
     }
 
-    public function isDone(): ?bool
+    public function getUUID(): ?string
     {
-        return $this->done;
+        return $this->UUID;
     }
 
-    public function setDone(bool $done): static
+    public function setUUID(string $UUID): static
     {
-        $this->done = $done;
+        $this->UUID = $UUID;
 
         return $this;
     }
+
+    public function getHouse(): ?Home
+    {
+        return $this->house;
+    }
+
+    public function setHouse(?Home $house): static
+    {
+        $this->house = $house;
+
+        return $this;
+    }
+
+    
 }

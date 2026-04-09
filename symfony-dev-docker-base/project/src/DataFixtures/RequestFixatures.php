@@ -15,11 +15,11 @@ class RequestFixatures extends Fixture implements DependentFixtureInterface
         $statuses = ['pas traité', 'en cours', 'terminer'];
 
         $data = [
-            ['lastname' => 'Doe',    'firstname' => 'John',  'email' => 'john@gmail.com',  'tel' => '0123456789', 'code_mail'=> 'abcdef'],
-            ['lastname' => 'Martin', 'firstname' => 'Alice', 'email' => 'alice@gmail.com', 'tel' => '0612345678','code_mail'=> 'abcdef'],
-            ['lastname' => 'Durand', 'firstname' => 'Bob',   'email' => 'bob@gmail.com',   'tel' => '0698765432','code_mail'=> 'abcdef'],
-            ['lastname' => 'Leroy',  'firstname' => 'Clara', 'email' => 'clara@gmail.com', 'tel' => '0645123456','code_mail'=> 'abcdef'],
-            ['lastname' => 'Petit',  'firstname' => 'Marc',  'email' => 'marc@gmail.com',  'tel' => '0678901234','code_mail'=> 'abcdef'],
+            ['lastname' => 'Doe',    'firstname' => 'John',  'email' => 'john@gmail.com',  'tel' => '0123456789'],
+            ['lastname' => 'Martin', 'firstname' => 'Alice', 'email' => 'alice@gmail.com', 'tel' => '0612345678'],
+            ['lastname' => 'Durand', 'firstname' => 'Bob',   'email' => 'bob@gmail.com',   'tel' => '0698765432'],
+            ['lastname' => 'Leroy',  'firstname' => 'Clara', 'email' => 'clara@gmail.com', 'tel' => '0645123456'],
+            ['lastname' => 'Petit',  'firstname' => 'Marc',  'email' => 'marc@gmail.com',  'tel' => '0678901234'],
         ];
 
         foreach ($data as $i => $info) {
@@ -31,10 +31,10 @@ class RequestFixatures extends Fixture implements DependentFixtureInterface
             $request->setService($this->getReference('service_' . ($i % 3), Service::class));
             $request->setDate(new \DateTime());
             $request->setStatus($statuses[0]);
-            $request->setCodeMail($info['code_mail']);
-            $request->setDone(false);
+        
 
             $manager->persist($request);
+            $this->addReference('request_' . $i, $request);
         }
 
         $manager->flush();

@@ -17,7 +17,7 @@ class Document
     #[ORM\Column(type: Types::TEXT)]
     private ?string $doc = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(cascade: ['persist', 'remove'])]
     private ?Request $request = null;
 
     #[ORM\ManyToOne(inversedBy: 'documents')]
