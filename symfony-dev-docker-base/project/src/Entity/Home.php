@@ -40,9 +40,16 @@ class Home
     #[ORM\OneToMany(targetEntity: Document::class, mappedBy: 'home', orphanRemoval: true)]
     private Collection $documents;
 
+    /**
+     * @var Collection<int, Request>
+     */
+    #[ORM\OneToMany(targetEntity: Request::class, mappedBy: 'house')]
+    private Collection $requests;
+
     public function __construct()
     {
         $this->documents = new ArrayCollection();
+        $this->requests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +153,36 @@ class Home
             // set the owning side to null (unless already changed)
             if ($document->getHome() === $this) {
                 $document->setHome(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Request>
+     */
+    public function getRequests(): Collection
+    {
+        return $this->requests;
+    }
+
+    public function addRequest(Request $request): static
+    {
+        if (!$this->requests->contains($request)) {
+            $this->requests->add($request);
+            $request->setHouse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRequest(Request $request): static
+    {
+        if ($this->requests->removeElement($request)) {
+            // set the owning side to null (unless already changed)
+            if ($request->getHouse() === $this) {
+                $request->setHouse(null);
             }
         }
 

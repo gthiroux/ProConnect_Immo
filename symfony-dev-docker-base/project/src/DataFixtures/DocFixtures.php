@@ -42,7 +42,7 @@ class DocFixtures extends Fixture implements DependentFixtureInterface
 
             foreach ($docs as $docData) {
                 $document = new Document();
-                $document->setDoc('uploads/documents/' . $docData['file']);
+                $document->setDoc('documents/' . $docData['file']);
                 $document->setHome($home);
 
                 // Lier à une request si définie
