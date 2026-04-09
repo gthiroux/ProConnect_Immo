@@ -163,10 +163,10 @@ if (!$uuid_error && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actio
             <span class="doc-card-meta">Document #<?= (int)$doc['id'] ?></span>
           </div>
           <div class="doc-card-actions">
-            <a class="doc-btn" href="./assets/documents/upload/<?= htmlspecialchars($doc['doc']) ?>" download title="Télécharger">
+            <a class="doc-btn" href="<?= htmlspecialchars($doc['doc']) ?>" download title="Télécharger">
               <i class="fa-solid fa-download"></i>
             </a>
-            <a class="doc-btn" href="./assets/documents/upload/<?= htmlspecialchars($doc['doc']) ?>" target="_blank" rel="noopener" title="Aperçu">
+            <a class="doc-btn" href="<?= htmlspecialchars($doc['doc']) ?>" target="_blank" rel="noopener" title="Aperçu">
               <i class="fa-regular fa-eye"></i>
             </a>
           </div>

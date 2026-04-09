@@ -89,6 +89,75 @@
             </div>
         </div>
     </section>
+    <section id="informations" class="section">
+        <div class="centre">
+            <p class="etiquette">Nous trouver</p>
+            <h2 class="titre-section">Informations pratiques</h2>
+            <div class="infos-grille">
+
+                <!-- Horaires -->
+                <div class="info-bloc">
+                    <div class="info-bloc-titre">Horaires d'ouverture</div>
+                    <div class="info-horaire-row">
+                        <span class="info-jour">Lundi – Vendredi</span>
+                        <span class="info-heure">9h00 – 19h00</span>
+                    </div>
+                    <div class="info-horaire-row">
+                        <span class="info-jour">Samedi</span>
+                        <span class="info-heure">10h00 – 17h00</span>
+                    </div>
+                    <div class="info-horaire-row">
+                        <span class="info-jour">Dimanche</span>
+                        <span class="info-heure ferme">Fermé</span>
+                    </div>
+                    <div class="info-note">
+                        <p>Des rendez-vous en dehors des horaires peuvent être organisés sur demande pour nos clients privés.</p>
+                        <a href="#contact" class="btn btn-or">Prendre rendez-vous</a>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="info-bloc">
+                    <div class="info-bloc-titre">Nous contacter</div>
+                    <div class="info-contact-item">
+                        <span class="info-label">Téléphone</span>
+                        <a href="tel:+33142001234" class="info-valeur">+33 (0)1 42 00 12 34</a>
+                    </div>
+                    <div class="info-contact-item">
+                        <span class="info-label">Email</span>
+                        <a href="mailto:contact@latelier-immobilier.fr" class="info-valeur">contact@latelier-immobilier.fr</a>
+                    </div>
+                    <div class="info-contact-item">
+                        <span class="info-label">Ligne privée</span>
+                        <a href="tel:+33142001235" class="info-valeur">+33 (0)1 42 00 12 35</a>
+                    </div>
+                    <div class="info-contact-item">
+                        <span class="info-label">WhatsApp & SMS</span>
+                        <a href="https://wa.me/33612001234" class="info-valeur">+33 (0)6 12 00 12 34</a>
+                    </div>
+                </div>
+
+                <!-- Adresse -->
+                <div class="info-bloc">
+                    <div class="info-bloc-titre">Notre adresse</div>
+                    <p class="info-adresse">12, Avenue Montaigne<br>75008 Paris, France</p>
+                    <div class="info-contact-item">
+                        <span class="info-label">Métro</span>
+                        <span class="info-valeur">Franklin D. Roosevelt (L1 / L9)</span>
+                    </div>
+                    <div class="info-contact-item">
+                        <span class="info-label">Parking</span>
+                        <span class="info-valeur">Parking George V disponible</span>
+                    </div>
+                    <div class="info-note">
+                        <p>Consultations sur rendez-vous uniquement, afin de garantir un accueil personnalisé.</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-sombre">Voir sur la carte</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </main>
 
 <?php require_once './includes/footer.php'; ?>

@@ -50,7 +50,7 @@
 }
 .btn:hover       { opacity: .85; transform: translateY(-1px); }
 .btn-sombre      { background: var(--sombre); color: var(--blanc); }
-.btn-or          { background: var(--or);     color: var(--sombre); }
+.btn-or          { background: var(--or);     color: white; }
 
 .hero-image { position: relative; }
 .hero-image .photo {
@@ -185,7 +185,7 @@
 
 .badge-annees {
   background: var(--or);
-  color: var(--sombre);
+  color: white;
   padding: 20px;
   border-radius: var(--rayon);
   display: flex;
@@ -218,3 +218,126 @@
 }
 .pilier h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
 .pilier p  { font-size: 13px; color: var(--discret); line-height: 1.65; }
+
+.infos-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(184, 152, 106, 0.25);
+}
+
+.info-bloc {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(184, 152, 106, 0.25);
+}
+
+.info-bloc:last-child {
+    border-right: none;
+}
+
+.info-bloc-titre {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b8986a;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-bloc-titre::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: #b8986a;
+}
+
+/* Horaires */
+.info-horaire-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(184, 152, 106, 0.12);
+}
+
+.info-horaire-row:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+.info-jour {
+    font-size: 13px;
+    font-weight: 300;
+    color: #666;
+}
+
+.info-heure {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.info-heure.ferme {
+    font-style: italic;
+    color: #aaa;
+}
+
+.info-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(184, 152, 106, 0.12);
+}
+
+.info-contact-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+}
+
+.info-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa;
+}
+
+.info-valeur {
+    font-size: 13.5px;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+a.info-valeur:hover {
+    color: #b8986a;
+}
+
+.info-adresse {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(184, 152, 106, 0.12);
+}
+
+/* Note encadrée */
+.info-note {
+    margin-top: 1.5rem;
+    padding: 1.2rem 1.4rem;
+    background: rgba(184, 152, 106, 0.05);
+    border-left: 2px solid #b8986a;
+}
+
+.info-note p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #666;
+    margin: 0 0 1rem;
+}

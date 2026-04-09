@@ -33,31 +33,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     }
 
     if (!$rdv_error) {
-        $uuid = sprintf(
-            '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
-            random_int(0, 0xffff), random_int(0, 0xffff),
-            random_int(0, 0xffff),
-            random_int(0, 0x0fff) | 0x4000,
-            random_int(0, 0x3fff) | 0x8000,
-            random_int(0, 0xffff), random_int(0, 0xffff), random_int(0, 0xffff)
-        );
-        $code_mail = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
-
         $stmt = $pdo->prepare("
             INSERT INTO `request`
-                (`uuid`, `lastname`, `firstname`, `email`, `tel`, `date`, `status`, `code_mail`, `service_id`, `house_id`)
+                (`lastname`, `firstname`, `email`, `tel`, `date`, `status`, `service_id`, `house_id`)
             VALUES
-                (:uuid, :lastname, :firstname, :email, :tel, :date, :status, :code_mail, :service_id, :house_id)
+                (:lastname, :firstname, :email, :tel, :date, :status, :service_id, :house_id)
         ");
         $stmt->execute([
-            ':uuid'       => $uuid,
             ':lastname'   => $lastname,
             ':firstname'  => $firstname,
             ':email'      => $email,
             ':tel'        => $tel,
             ':date'       => $date,
             ':status'     => 'pas traité',
-            ':code_mail'  => $code_mail,
             ':service_id' => $service_id,
             ':house_id'   => $house_id,
         ]);

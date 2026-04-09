@@ -139,7 +139,7 @@
     bottom: 12px;
     right: 12px;
     background: var(--dark);
-    color: var(--gold);
+    color: white;
     font-family: var(--font-body);
     font-size: .78rem;
     font-weight: 500;
