@@ -33,7 +33,7 @@ class HomeFixtures extends Fixture
                 'surface'     => 200,
                 'price'       => 850000.00,
                 'description' => 'Somptueuse maison contemporaine de 200m²...',
-                'image'       => 'maison3.jpg',
+                'image'       => 'maison1.jpg',
             ],
             [
                 'title'       => 'Charmante maison de campagne',
@@ -41,7 +41,7 @@ class HomeFixtures extends Fixture
                 'surface'     => 150,
                 'price'       => 380000.00,
                 'description' => 'Authentique maison de campagne en pierre...',
-                'image'       => 'maison4.jpg',
+                'image'       => 'maison2.jpg',
             ],
             [
                 'title'       => 'Maison neuve BBC basse consommation',
@@ -49,7 +49,7 @@ class HomeFixtures extends Fixture
                 'surface'     => 110,
                 'price'       => 295000.00,
                 'description' => 'Maison neuve labellisée BBC, 3 chambres...',
-                'image'       => 'maison5.jpg',
+                'image'       => 'maison2.jpg',
             ],
         ];
 
@@ -60,7 +60,7 @@ class HomeFixtures extends Fixture
             $home->setSurface($data['surface']);
             $home->setPrice($data['price']);
             $home->setDescription($data['description']);
-            $home->setImage($data['image']);
+            $home->setImage('house/'.$data['image']);
 
             $manager->persist($home);
 

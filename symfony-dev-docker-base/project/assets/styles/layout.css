@@ -1,0 +1,55 @@
+/* ── Nav ─────────────────────────────────── */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 2rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--bleu);
+    box-shadow: 0 4px 10px var(--bleu);
+}
+
+.nav-logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--bleu);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 01rem;
+    color: var(--sombre);
+    letter-spacing: 0.03em;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #2c2b28;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--bleu);
+    padding-bottom: 2px;
+}
+
+/* ── Footer ──────────────────────────────── */
+footer {
+    border-top: 1px solid var(--bleu);
+    box-shadow: 0 4px 10px var(--bleu);
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+footer p {
+    font-size: 1rem;
+    color: var(--sombre);
+    letter-spacing: 0.04em;
+}
