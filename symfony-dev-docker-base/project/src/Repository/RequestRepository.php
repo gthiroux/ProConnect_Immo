@@ -62,6 +62,20 @@ class RequestRepository extends ServiceEntityRepository
 		;
 	}
 
+	public function acceptRequest($id): int
+	{
+		$accepted='accepted';
+		return $this->createQueryBuilder('r')
+		->update('App\\Entity\\Request', 'r')
+		->set('r.status',':accepted')
+		->setParameter('accepted',$accepted)
+		->andWhere('r.id = :ID')
+		->setParameter('ID',$id)
+		->getQuery()
+		->execute()
+		;
+	}
+
 	//    public function findOneBySomeField($value): ?Request
 	//    {
 	//        return $this->createQueryBuilder('r')

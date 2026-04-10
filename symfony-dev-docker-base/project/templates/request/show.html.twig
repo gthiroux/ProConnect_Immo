@@ -42,12 +42,15 @@
 
 		</tbody>
 	</table>
+	<form method="post" action="{{ path('app_request_accept', {'UUID': request.UUID}) }}">
+		<input type="hidden" name="_token" value="{{ csrf_token('accept' ~ request.id) }}">
+		<button type="submit">✅ Accepter</button>
+	</form>
 
 	<a href="{{ path('app_request_index') }}">back to list</a>
 
-	<a href="{{ path('app_request_edit', {'id': request.id}) }}">edit</a>
+	<a href="{{ path('app_request_edit', {'UUID':request.UUID}) }}">edit</a>
 
-	{{ include('request/_delete_form.html.twig') }}
 	{% include "./partials/_footer.html.twig" %}
 
 {% endblock %}

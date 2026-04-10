@@ -5,7 +5,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	<link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/request_show.css') }}">
 
 {% endblock %}
 {% block body %}
@@ -35,8 +35,9 @@
 					<td>{{ request.status }}</td>
 
 					<td>
-						{# <a href="{{ path('app_request_show', {'uuid': request.uuid}) }}">show</a>
-																																																												<a href="{{ path('app_request_edit', {'uuid': request.uuid}) }}">edit</a> #}
+						<a href="{{ path('app_request_show', {'UUID':request.UUID}) }}">show</a>
+						<a href="{{ path('app_request_edit', {'UUID':request.UUID}) }}">edit</a>
+
 					</td>
 				</tr>
 			{% else %}
