@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Request
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/edit.css') }}">
+
+{% endblock %}
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<div class="content"></div>
+	<h1>Edit Request</h1>
+
+	{{ include('request/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a href="{{ path('app_request_index') }}">back to list</a>
+
+</div>{% endblock %}

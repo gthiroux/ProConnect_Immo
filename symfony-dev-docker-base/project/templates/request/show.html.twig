@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Request
+{% endblock %}
+
+{% block body %}
+	{% block stylesheets %}
+		{{ parent() }}
+		<link rel="stylesheet" href="{{ asset('styles/show.css') }}">
+
+	{% endblock %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<h1>Request n°{{request.id}}</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Date</th>
+				<td>{{ request.date ? request.date|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Lastname</th>
+				<td>{{ request.lastname }}</td>
+			</tr>
+			<tr>
+				<th>Firstname</th>
+				<td>{{ request.firstname }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ request.email }}</td>
+			</tr>
+			<tr>
+				<th>Tel</th>
+				<td>{{ request.tel }}</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				<td>{{ request.status }}</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<form method="post" action="{{ path('app_request_accept', {'UUID': request.UUID}) }}">
+		<input type="hidden" name="_token" value="{{ csrf_token('accept' ~ request.id) }}">
+		<button type="submit">✅ Accepter</button>
+	</form>
+
+	<a href="{{ path('app_request_index') }}">back to list</a>
+
+	<a href="{{ path('app_request_edit', {'UUID':request.UUID}) }}">edit</a>
+
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

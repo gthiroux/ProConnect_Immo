@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Admin;
+use App\Form\AdminType;
+use App\Repository\AdminRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Attribute\Route;
+
+#[Route('/profil')]
+final class AdminController extends AbstractController
+{
+    #[Route('/all', name: 'app_admin_index', methods: ['GET'])]
+    public function index(AdminRepository $adminRepository): Response
+    {
+        return $this->render('admin/index.html.twig', [
+            'admins' => $adminRepository->findAll(),
+        ]);
+    }
+
+    
+
+    #[Route( name: 'app_admin_profil')]
+    public function profil(): Response
+    {   
+        $admin=$this->getUser();
+        if (!$admin) {
+        return $this->redirectToRoute('app_login');
+        }
+        return $this->render('admin/show.html.twig', [
+            'admin' => $admin,
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_admin_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Admin $admin, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        $form = $this->createForm(AdminType::class, $admin);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $plainPassword = $form->get('password')->getData();
+    
+            if (!empty($plainPassword)) {
+                $admin->setPassword($passwordHasher->hashPassword($admin, $plainPassword));
+            }
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_admin_profil', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/edit.html.twig', [
+            'admin' => $admin,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_admin_delete', methods: ['POST'])]
+    public function delete(Request $request, Admin $admin, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$admin->getId(), $request->getPayload()->getString('_token'))) {
+            $entityManager->remove($admin);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+    }
+}

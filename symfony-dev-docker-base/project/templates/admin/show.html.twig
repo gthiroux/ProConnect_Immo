@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Profil
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/profil.css') }}">
+
+{% endblock %}
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<div class="profil">
+		<div class="profil_header">
+			<h1>Bievenue
+				{{[admin.firstname,admin.lastname]|join (' ')}}
+			</h1>
+			<div class="header_action">
+				<a href="{{ path('app_admin_edit', {'id': admin.id}) }} " class="btn-action">Modifier infos</a>
+				<a href="{{ path('app_logout')}} " class="btn-action">Déconnection</a>
+
+
+			</div>
+		</div>
+
+		<table class="profil_table">
+			<tbody>
+				<tr>
+					<th>Nom de famille</th>
+					<td>{{ admin.lastname}}</td>
+				</tr>
+				<tr>
+					<th>Prénom</th>
+					<td>{{ admin.firstname}}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ admin.email }}</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

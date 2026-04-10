@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Document
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{assets('styles/login.css')}}">
+{% endblock %}
+
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<div class="form">
+		<h1>Edit Document</h1>
+
+		{{ include('document/_form.html.twig', {'button_label': 'Update'}) }}
+
+		<a href="{{ path('app_document_index') }}">back to list</a>
+
+		{{ include('document/_delete_form.html.twig') }}
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

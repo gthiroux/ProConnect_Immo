@@ -1,0 +1,281 @@
+/* ── Page ────────────────────────────────── */
+.page-index {
+    width: 100%;
+    max-width: var(--largeur);
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+}
+
+.page-index h1 {
+    font-family: var(--police-titre);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--sombre);
+    margin-bottom: 1.8rem;
+}
+
+/* ── Wrapper scrollable ──────────────────── */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: solid 2px bar(--bleu);
+    background: var(--blanc);
+}
+
+/* ── Tableau ─────────────────────────────── */
+.table {
+    margin: 2rem;
+    width: 100%;
+    height: 78vh;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    color: var(--sombre);
+    white-space: nowrap;
+}
+
+/* ── En-tête ─────────────────────────────── */
+.table thead tr {
+    background: var(--bg);
+    border-bottom: 1.5px solid var(--bord);
+}
+
+.table thead th {
+    padding: 0.85rem 1.1rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--discret);
+}
+
+/* ── Lignes ──────────────────────────────── */
+.table tbody tr {
+    border-bottom: 1px solid var(--bord);
+    transition: background-color 0.15s ease;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f4f8;
+}
+
+.table tbody td {
+    padding: 0.85rem 1.1rem;
+    color: var(--sombre);
+    vertical-align: middle;
+}
+
+/* ── Colonne UUID tronquée ───────────────── */
+.table td.uuid {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--discret);
+    font-size: 0.78rem;
+    font-family: monospace;
+}
+
+/* ── Badge status ────────────────────────── */
+.table td .badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.badge-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+.badge-confirmed {
+    background: #d1fae5;
+    color: #065f46;
+}
+.badge-cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ── Actions ─────────────────────────────── */
+.table td.actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.table td.actions a {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border-radius: 4px;
+    text-decoration: none;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.table td.actions a:first-child {
+    background: var(--bg);
+    color: var(--bleu);
+    border: 1px solid var(--bord);
+}
+
+.table td.actions a:first-child:hover {
+    background: var(--bleu);
+    color: var(--blanc);
+    border-color: var(--bleu);
+}
+
+.table td.actions a:last-child {
+    background: transparent;
+    color: var(--discret);
+    border: 1px solid var(--bord);
+}
+
+.table td.actions a:last-child:hover {
+    background: var(--bg);
+    color: var(--sombre);
+}
+
+/* ── Ligne vide ──────────────────────────── */
+.table tbody td[colspan] {
+    text-align: center;
+    color: var(--discret);
+    padding: 2rem;
+    font-style: italic;
+}
+
+/* ── Bouton Create ───────────────────────── */
+.btn-create {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.6rem 1.4rem;
+    background: var(--bleu);
+    color: var(--blanc);
+    border: none;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn-create:hover {
+    opacity: 0.85;
+}
+
+/* ── Boutons d'action ────────────────────── */
+.actions {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+    line-height: 1;
+}
+
+/* Accepter — vert */
+.btn-accept {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+.btn-accept:hover {
+    background: #059669;
+    color: #fff;
+    border-color: #059669;
+}
+
+/* Modifier date — bleu */
+.btn-date {
+    background: #e0f0f8;
+    color: #227f89;
+    border-color: #b5d4e8;
+}
+.btn-date:hover {
+    background: #227f89;
+    color: #fff;
+    border-color: #227f89;
+}
+
+/* Envoyer mail — violet discret */
+.btn-mail {
+    background: #f0edfb;
+    color: #67246f;
+    border-color: #d8c8e8;
+}
+.btn-mail:hover {
+    background: #67246f;
+    color: #fff;
+    border-color: #67246f;
+}
+
+/* Show */
+.btn-show {
+    width: 15rem;
+    padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+    font-weight: 700;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border: 2px solid var(--bleu);
+    border-radius: 4px;
+}
+.btn-show:hover {
+    background: var(--bleu);
+    color: #fff;
+    border-color: var(--bleu);
+}
+
+/* Edit */
+.btn-edit {
+    width: 15rem;
+    padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+    font-weight: 700;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border: 2px solid var(--bleu);
+    border-radius: 4px;
+}
+.btn-edit:hover {
+    background: var(--bg);
+    color: var(--sombre);
+    border-color: var(--sombre);
+}
+
+/* UUID tronqué */
+.uuid-cell {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--discret);
+}

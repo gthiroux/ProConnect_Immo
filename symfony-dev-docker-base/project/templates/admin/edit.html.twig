@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Admin
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{asset('styles/edit.css')}}">
+{% endblock %}
+
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+	<div class="form">
+		<h1>Edit Admin</h1>
+
+		{{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+		{{ include('admin/_delete_form.html.twig') }}
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

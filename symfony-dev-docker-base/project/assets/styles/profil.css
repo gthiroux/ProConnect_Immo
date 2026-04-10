@@ -1,0 +1,77 @@
+.profil {
+    width: 95%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 2rem;
+}
+.profil_header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+h1 {
+    font-family: var(--police-titre);
+}
+/* .header_action {
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
+.header_action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.45rem 1rem;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-action:hover {
+    background-color: var(--violet);
+}
+
+.profil_table {
+    margin-top: 2.5rem;
+    border-collapse: collapse;
+    align-self: flex-start;
+}
+
+.profil_table th,
+.profil_table td {
+    padding: 0.5rem 2rem 0.5rem 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+.profil_table th {
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--bleu);
+}
+button,
+.btn {
+    width: 15rem;
+    padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+    font-weight: 700;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border: 2px solid var(--bleu);
+    border-radius: 4px;
+}

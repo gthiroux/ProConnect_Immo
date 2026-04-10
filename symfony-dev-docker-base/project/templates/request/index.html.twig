@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/request_show.css') }}">
+
+{% endblock %}
+{% block body %}
+
+	{% include "./partials/_nav.html.twig" %}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Lastname</th>
+				<th>Firstname</th>
+				<th>Email</th>
+				<th>Tel</th>
+				<th>Status</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for request in requests %}
+				<tr>
+					<td>{{ request.date ? request.date|date('d/m/Y ') : '' }}</td>
+					<td>{{ request.lastname }}</td>
+					<td>{{ request.firstname }}</td>
+					<td>{{ request.email }}</td>
+					<td>{{ request.tel }}</td>
+					<td>{{ request.status }}</td>
+
+					<td>
+						<a href="{{ path('app_request_show', {'UUID':request.UUID}) }}">show</a>
+						<a href="{{ path('app_request_edit', {'UUID':request.UUID}) }}">edit</a>
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="10">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_request_new') }}">Create new</a>
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

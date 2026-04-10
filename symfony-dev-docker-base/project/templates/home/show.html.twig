@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails -
+	{{ home.title }}
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/show.css') }}">
+
+{% endblock %}
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<div class="show-container">
+		<div class="show-card">
+			<div class="show-image">
+				<img src="{{ asset( home.image) }}" alt="{{ home.title }}">
+			</div>
+
+			<div class="show-details">
+				<h1 class="show-title">{{ home.title }}</h1>
+				<p class="show-price">{{ home.price }}
+					€</p>
+
+				<div class="show-info-grid">
+					<div class="info-item">
+						<strong>Adresse :</strong>
+						{{ home.adress }}</div>
+					<div class="info-item">
+						<strong>Surface :</strong>
+						{{ home.surface }}
+						m²</div>
+				</div>
+
+				<hr>
+
+				<div class="show-description">
+					<h3>Description</h3>
+					<p>{{ home.description }}</p>
+				</div>
+
+				<div class="show-actions">
+					<a href="{{ path('app_home_index') }}" class="btn-back">Retour à la liste</a>
+					<a href="{{ path('app_home_edit', {'id': home.id}) }}" class="btn-edit">Modifier</a>
+					{# <div class="delete-wrapper"> #}
+					{{ include('home/_delete_form.html.twig') }}
+					{# </div> #}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}
