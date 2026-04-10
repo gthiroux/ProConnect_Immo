@@ -30,3 +30,12 @@ html {
     background: var(--bg) !important;
     font-family: var(--police-texte);
 }
+button {
+    width: 15rem;
+    padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+    font-weight: 700;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border: 2px solid var(--bleu);
+    border-radius: 4px;
+}
