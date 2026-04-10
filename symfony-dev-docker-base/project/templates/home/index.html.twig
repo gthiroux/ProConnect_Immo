@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home index{% endblock %}
+
+{% block body %}
+    <div class="CN-btn">
+        <a href="{{ path('app_home_new') }}" class="btn">Create new</a>
+    </div>
+
+    <div class="ensemble">
+        {% for home in homes %}
+            <div class="card">
+                <div class="home-image">
+                    {# Si c'est un nom de fichier, utilise asset() #}
+                    <img src="{{ asset('uploads/images/' ~ home.image) }}" alt="{{ home.title }}" style="width:100%; height:100%; object-fit:cover; border-radius: .5rem .5rem 0 0;">
+                </div>
+                
+                <div class="card-content">
+                    <div class="home-price">{{ home.price }} €</div>
+                    <div class="home-title">{{ home.title }}</div>
+                    <div class="home-adress">{{ home.adress }}</div>
+                    
+                    <div class="home-surface">
+                        <span class="icon-surface">📐</span>{{ home.surface }} m²
+                    </div>
+                    
+                    <p class="home-description">{{ home.description|slice(0, 100) }}...</p>
+                </div>
+
+                <div class="card-actions">
+                    <a href="{{ path('app_home_show', {'id': home.id}) }}" class="btn-show">Show</a>
+                    <a href="{{ path('app_home_edit', {'id': home.id}) }}" class="btn-edit">Edit</a>
+                </div>
+            </div>
+        {% else %}
+            <p>No records found</p>
+        {% endfor %}
+    </div>
+{% endblock %}
