@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Request;
 use App\Form\RequestType;
 use App\Repository\RequestRepository;
+use App\Service\SendEmailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -32,10 +33,17 @@ final class RequestController extends AbstractController
 public function accept(
     #[MapEntity(mapping: ['UUID' => 'UUID'])] Request $request,
     EntityManagerInterface $entityManager,
-    httprequest $http, RequestRepository $repo
+    httprequest $http, RequestRepository $repo,
+    SendEmailService $mailService
 ): Response {
     if ($this->isCsrfTokenValid('accept' . $request->getId(), $http->getPayload()->getString('_token'))) {
 			$repo->acceptRequest($request->getId()); 
+            $mailService->sendWithRequest(
+    from: 'noreply@atelierimmo.com',
+    subject: 'Accès à votre document',
+    template: 'mail',
+    request: $request,
+);
 		}
 
     return $this->redirectToRoute('app_request_show', ['UUID' => $request->getUuid()], Response::HTTP_SEE_OTHER);

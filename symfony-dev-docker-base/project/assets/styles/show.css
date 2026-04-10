@@ -1,5 +1,7 @@
 /* Container principal */
 .show-container {
+    height: 80vh;
+
     display: flex;
     justify-content: center;
     padding: 3rem 1rem;
@@ -16,7 +18,7 @@
     flex-direction: column; /* Mobile first */
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* Image large */
@@ -46,7 +48,7 @@
 .show-price {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #27ae60;
+    color: var(--vert);
     margin-bottom: 1.5rem;
 }
 
@@ -80,7 +82,8 @@
     align-items: center;
 }
 
-.show-actions a, .show-actions button {
+.show-actions a,
+.show-actions button {
     padding: 0.8rem 1.5rem;
     text-decoration: none;
     border-radius: 0.5rem;
@@ -96,11 +99,12 @@
 }
 
 .btn-edit {
-    background-color: #3498db;
+    background-color: var(--bleu);
     color: white;
 }
 
-.btn-back:hover, .btn-edit:hover {
+.btn-back:hover,
+.btn-edit:hover {
     opacity: 0.8;
 }
 
