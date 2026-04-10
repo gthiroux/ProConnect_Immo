@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Admin;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,8 +17,9 @@ class AdminType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('email')
-            ->add('password')
-        ;
+            ->add('password', PasswordType::class,['label'=> 'Nouveau mot de passe','required' => false,
+    'empty_data' => '',
+    'attr' => ['placeholder' => 'Nouveau mot de passe'],]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

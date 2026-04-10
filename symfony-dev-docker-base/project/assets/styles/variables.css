@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f3ef;
+    --sombre: #111110;
+    --violet: #67246f;
+    --vert: #3ec271;
+    --bleu: #227f89;
+    /* --or: #c9a84c;
+    --or-clair: #e8c96d; */
+    --blanc: #ffffff;
+    --discret: #6b6b62;
+    --bord: #e0dfd8;
+
+    --police-titre: "Cormorant Garamond", Georgia, serif;
+    --police-texte: "DM Sans", system-ui, sans-serif;
+
+    --rayon: 4px;
+    --anim: 0.25s ease;
+    --largeur: 1280px;
+    --nav-h: 68px;
+}
+
+body,
+html {
+    background: var(--bg) !important;
+    font-family: var(--police-texte);
+}
+button {
+    width: 15rem;
+    padding: 0.6rem 1.8rem 0.6rem 1.8rem;
+    font-weight: 700;
+    background-color: var(--bleu);
+    color: var(--blanc);
+    border: 2px solid var(--bleu);
+    border-radius: 4px;
+}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Document
+{% endblock %}
+
+{% block body %}
+	{% include "./partials/_nav.html.twig" %}
+
+	<h1>Document</h1>
+	<a href="{{ path('app_document_index') }}">back to list</a>
+
+	<a href="{{ path('app_document_edit', {'id': document.id}) }}">edit</a>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ document.request.id }}</td>
+			</tr>
+			<tr>
+
+				<td>
+					<a href="{{ asset(document.doc) }}" target="_blank">Voir le PDF</a>
+				</td>
+			</tr>
+			<tr>
+				<th>Proprio</th>
+				<td>{{ [document.request.firstname,document.request.lastname] |join (' ') }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	{{ include('document/_delete_form.html.twig') }}
+	{% include "./partials/_footer.html.twig" %}
+
+{% endblock %}

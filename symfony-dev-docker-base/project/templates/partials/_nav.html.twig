@@ -1,0 +1,11 @@
+<nav>
+	<span class="nav-logo">L'Atelier Immo</span>
+	<ul class="nav-links">
+		<li>
+			<a href="{{ path('app_admin_profil') }}" class="{{ app.request.attributes.get('_route') == 'app_admin_profil' ? 'active' }}">
+				Profil
+			</a>
+		</li>
+
+	</ul>
+</nav>
