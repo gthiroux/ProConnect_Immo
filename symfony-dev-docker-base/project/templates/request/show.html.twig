@@ -1,54 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Request{% endblock %}
+{% block title %}Request
+{% endblock %}
 
 {% block body %}
-    <h1>Request</h1>
+	{% block stylesheets %}
+		{{ parent() }}
+		<link rel="stylesheet" href="{{ asset('styles/show.css') }}">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ request.id }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ request.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ request.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ request.email }}</td>
-            </tr>
-            <tr>
-                <th>Tel</th>
-                <td>{{ request.tel }}</td>
-            </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ request.date ? request.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{{ request.status }}</td>
-            </tr>
-            <tr>
-                <th>Code_mail</th>
-                <td>{{ request.codeMail }}</td>
-            </tr>
-            <tr>
-                <th>UUID</th>
-                <td>{{ request.UUID }}</td>
-            </tr>
-        </tbody>
-    </table>
+	{% endblock %}
+	{% include "./partials/_nav.html.twig" %}
 
-    <a href="{{ path('app_request_index') }}">back to list</a>
+	<h1>Request n°{{request.id}}</h1>
 
-    <a href="{{ path('app_request_edit', {'id': request.id}) }}">edit</a>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Date</th>
+				<td>{{ request.date ? request.date|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Lastname</th>
+				<td>{{ request.lastname }}</td>
+			</tr>
+			<tr>
+				<th>Firstname</th>
+				<td>{{ request.firstname }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ request.email }}</td>
+			</tr>
+			<tr>
+				<th>Tel</th>
+				<td>{{ request.tel }}</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				<td>{{ request.status }}</td>
+			</tr>
 
-    {{ include('request/_delete_form.html.twig') }}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_request_index') }}">back to list</a>
+
+	<a href="{{ path('app_request_edit', {'id': request.id}) }}">edit</a>
+
+	{{ include('request/_delete_form.html.twig') }}
+	{% include "./partials/_footer.html.twig" %}
+
 {% endblock %}
