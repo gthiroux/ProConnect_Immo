@@ -158,18 +158,6 @@
 }
 .acces-aide:hover { color: var(--sombre); }
 
-.acces-deco {
-  position: absolute;
-  bottom: -30px;
-  left: -30px;
-  width: 200px;
-  height: 200px;
-  border: 1px solid var(--bord);
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: .4;
-}
-
 /* ————————————————————————————— DOCUMENTS SECTION */
 
 .doc-section {

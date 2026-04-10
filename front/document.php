@@ -3,10 +3,7 @@ require_once __DIR__ . '/config/db.php';
 require_once __DIR__ . '/includes/functions.php';
 require_once __DIR__ . '/includes/head.php';
 $uuid       = trim($_GET['uuid'] ?? '');
-$uuid_valid = (bool) preg_match(
-    '/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i',
-    $uuid
-);
+$uuid_valid = (bool) preg_match('/^[a-zA-Z0-9\-_]{1,128}$/', $uuid);
 $request    = null;
 $uuid_error = '';
 if (!$uuid) {
@@ -64,7 +61,6 @@ if (!$uuid_error && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actio
       </a>
     </div>
     <div class="doc-hero-right">
-      <div class="acces-deco"></div>
     </div>
   </section>
   <?php elseif (!$unlocked): ?>
@@ -108,7 +104,6 @@ if (!$uuid_error && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actio
           <i class="fa-regular fa-circle-question"></i> Besoin d'assistance ?
         </a>
       </div>
-      <div class="acces-deco"></div>
     </div>
   </section>
   <?php else: ?>
