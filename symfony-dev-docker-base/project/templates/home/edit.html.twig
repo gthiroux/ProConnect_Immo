@@ -1,17 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Home{% endblock %}
+{% block title %}Edit Home
+{% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/edit.css') }}">
+
+{% endblock %}
 {% block body %}
-    <h1>Edit Home</h1>
-    {{ include('home/_form.html.twig', {'button_label': 'Update'}) }}
+	{% include "./partials/_nav.html.twig" %}
+
+	<div class="content">
+		<h1>Edit Home</h1>
+		{{ include('home/_form.html.twig', {'button_label': 'Update'}) }}
 
 
-    <div class="show-actions">
-    <a class="btn-back" href="{{ path('app_home_index') }}">back to list</a>
+		<div class="show-actions">
+			<a class="btn" href="{{ path('app_home_index') }}">back to list</a>
 
-    </div>
-    {# <div class="delete-wrapper"> #}
-    {{ include('home/_delete_form.html.twig') }}
-    {# </div> #}
+		</div>
+		{# <div class="delete-wrapper"> #}
+		{{ include('home/_delete_form.html.twig') }}
+		{# </div> #}
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
 {% endblock %}

@@ -1,13 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Home{% endblock %}
+{% block title %}New Home
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/edit.css') }}">
 
+{% endblock %}
 {% block body %}
-    <h1>Create new Home</h1>
+	{% include "./partials/_nav.html.twig" %}
 
-    {{ include('home/_form.html.twig') }}
+	<div class="content">
+		<h1>Create new Home</h1>
 
-    <div class="show-actions">
-    <a class="btn-back" href="{{ path('app_home_index') }}">back to list</a>
-    </div>
+		{{ include('home/_form.html.twig') }}
+
+		<div class="show-actions">
+			<a class="btn-back" href="{{ path('app_home_index') }}">back to list</a>
+		</div>
+	</div>
+	{% include "./partials/_footer.html.twig" %}
+
 {% endblock %}

@@ -1,5 +1,6 @@
 /* ── Nav ─────────────────────────────────── */
 nav {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,6 +43,7 @@ nav {
 
 /* ── Footer ──────────────────────────────── */
 footer {
+    width: 100%;
     border-top: 1px solid var(--bleu);
     box-shadow: 0 4px 10px var(--bleu);
     padding: 1rem 2rem;
