@@ -20,7 +20,11 @@ final class RequestController extends AbstractController
 	{
 		foreach ($repo->selectNullUUID() as $r) {
 			$r->setUUID($r->getEmail());
-			$repo->updateNullUUID($r->getUUID(), $r->getEmail());
+            $code = '';
+            for ($i = 0; $i < 6; $i++) {
+                $code = $code . rand(0,9);
+            }
+			$repo->updateNullUUID($r->getUUID(), $r->getEmail(),$code);
 		}
 		$uniRequests = $repo->selectGroupByUUID();
 		return $this->render('request/index.html.twig', [
@@ -41,6 +45,7 @@ public function accept(
             $mailService->sendWithRequest(
     from: 'noreply@atelierimmo.com',
     subject: 'Accès à votre document',
+    route:'app_document_index',
     template: 'mail',
     request: $request,
 );

@@ -40,18 +40,20 @@ class RequestRepository extends ServiceEntityRepository
 		;
 	}
 
-	public function updateNullUUID($UUID, $email): int
-	{
-		return $this->createQueryBuilder('r')
-			->update('App\\Entity\\Request', 'r')
-			->set('r.UUID', ':UUID')
-			->setParameter('UUID', $UUID)
-			->andWhere('r.email = :email')
-			->setParameter('email', $email)
-			->getQuery()
-			->execute()
-		;
-	}
+	public function updateNullUUID($UUID, $email, $code): int
+    {
+        return $this->createQueryBuilder('r')
+            ->update('App\Entity\Request', 'r')
+            ->set('r.UUID', ':UUID')
+            ->setParameter('UUID', $UUID)
+            ->set('r.code_mail', ':code')
+            ->setParameter('code', $code)
+            ->andWhere('r.email = :email')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->execute()
+        ;
+    }
 
 	public function selectGroupByUUID(): array
 	{

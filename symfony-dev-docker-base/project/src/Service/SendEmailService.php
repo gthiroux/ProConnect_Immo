@@ -35,7 +35,7 @@ class SendEmailService
         string $subject,
         string $template,
         Request $request,
-        string $route = 'localhost:8080/front/document.php?',
+        string $route,
         array $extraContext = []
     ): void {
         // Génération de l'URL à partir de l'UUID
